@@ -16,6 +16,10 @@ export const routes: Routes = [
     path: 'produto/criar',
     loadComponent: () => import('./pages/produto/formulario/formulario.component').then(m => m.FormularioComponent),
   },
+{
+  path: 'produto/editar/:id',
+    loadComponent: () => import('./pages/produto/formulario/formulario.component').then(m => m.FormularioComponent)
+  },
 
   { path: '', redirectTo: 'pedido', pathMatch: 'full' }
 ];

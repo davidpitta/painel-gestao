@@ -16,7 +16,7 @@
     <p class="descricao">{{ produto.descricao }}</p>
 
     <div class="card-footer">
-      <p class="preco">R$ {{ produto.preco_atual }}</p>
+      <p class="preco">{{ formatarPreco(produto.preco_atual) }}</p>
 
       <!-- Botões de ação -->
       <div class="botoes-acoes">

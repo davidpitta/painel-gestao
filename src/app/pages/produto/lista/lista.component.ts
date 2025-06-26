@@ -27,9 +27,10 @@ export class ListaComponent implements OnInit {
     this.router.navigate(['/produto/criar']);
   }
 
-  editarProduto(produto: Produto) {
-    console.log(produto)
+  editarProduto(produto: Produto): void {
+    this.router.navigate(['/produto/editar', produto._id]);
   }
+
 
   carregarProdutos(): void {
     this.service.listaProduto().subscribe({
@@ -50,4 +51,14 @@ export class ListaComponent implements OnInit {
       error: () => alert('Erro ao excluir produto.')
     });
   }
+
+  formatarPreco(valor: number): string {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(valor);
+}
+
 }
