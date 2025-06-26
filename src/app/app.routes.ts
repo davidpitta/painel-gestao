@@ -12,15 +12,24 @@ export const routes: Routes = [
   // rotas protegidas
   { path: 'pedido', component: PedidoComponent },
   { path: 'cardapio', component: ProdutoComponent },
+
   {
     path: 'produto/criar',
-    loadComponent: () => import('./pages/produto/formulario/formulario.component').then(m => m.FormularioComponent),
+    loadComponent: () =>
+      import('./pages/produto/formulario/formulario.component').then(
+        (m) => m.FormularioComponent
+      ),
   },
   {
     path: 'produto/editar/:id',
-    loadComponent: () => import('./pages/produto/formulario/formulario.component')
-      .then(m => m.FormularioComponent),
-    data: { renderMode: 'no-prerender' }
+    loadComponent: () =>
+      import('./pages/produto/formulario/formulario.component').then(
+        (m) => m.FormularioComponent
+      ),
+    data: {
+      prerender: false // Evita erro de pré-renderização na Vercel
+    }
   },
+
   { path: '', redirectTo: 'pedido', pathMatch: 'full' }
 ];
