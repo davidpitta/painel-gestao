@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+/* fixa a sidebar */
+app-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;       /* mesma largura do componente */
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+/* desloca todo o conteúdo para a direita */
+.main-content {
+  margin-left: 260px; /* sincroniza com a largura da sidebar */
+  padding: 1rem;
+}

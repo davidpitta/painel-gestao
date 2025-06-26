@@ -1,0 +1,191 @@
+<div class="pedidos-container">
+  <header class="pedidos-header">
+    <h1 class="titulo-principal">
+      🍽️ Pedidos
+    </h1>
+  </header>
+
+  <div class="loading" *ngIf="loading">
+    Carregando pedidos...
+  </div>
+
+  <div class="error-message" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <div class="pedidos-content" *ngIf="!loading && !error">
+    
+    <!-- PEDIDOS PENDENTES -->
+    <div class="secao-pedidos" *ngIf="pedidosPendentes.length > 0">
+      <div class="secao-card">
+        <div class="secao-header">
+          🕐 <h2>Pedidos em andamento</h2>
+        </div>
+        <div class="pedidos-lista">
+          <div class="pedido-card" *ngFor="let pedido of pedidosPendentes">
+            <div class="pedido-header">
+              <h3 class="pedido-numero">Pedido #{{ pedido._id.slice(-6) }}</h3>
+              <span class="status-badge status-pendente">
+                {{ getStatusText(pedido.status) }}
+              </span>
+            </div>
+
+            <div class="pedido-info">
+              <div class="info-item">
+                <strong>Mesa:</strong> {{ pedido.mesa }}
+              </div>
+              <div class="info-item">
+                <strong>Itens:</strong> {{ obterNomesProdutos(pedido) }}
+              </div>
+              <div class="info-item">
+                <strong>Total:</strong> {{ formatarValor(pedido.valor_total) }}
+              </div>
+              <div class="info-item">
+                <strong>Horário:</strong> {{ formatarHorario(pedido.data_criacao) }}
+              </div>
+            </div>
+
+            <div class="pedido-actions">
+              <button class="btn btn-iniciar" (click)="iniciarPreparo(pedido)">
+                Iniciar Preparo
+              </button>
+              <button class="btn btn-cancelar" (click)="cancelarPedido(pedido)">
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PEDIDOS EM PREPARO -->
+    <div class="secao-pedidos" *ngIf="pedidosPreparando.length > 0">
+      <div class="secao-card">
+        <div class="secao-header">
+          👨‍🍳 <h2>Pedidos em Preparo</h2>
+        </div>
+        <div class="pedidos-lista">
+          <div class="pedido-card" *ngFor="let pedido of pedidosPreparando">
+            <div class="pedido-header">
+              <h3 class="pedido-numero">Pedido #{{ pedido._id.slice(-6) }}</h3>
+              <span class="status-badge status-preparando">
+                {{ getStatusText(pedido.status) }}
+              </span>
+            </div>
+
+            <div class="pedido-info">
+              <div class="info-item">
+                <strong>Mesa:</strong> {{ pedido.mesa }}
+              </div>
+              <div class="info-item">
+                <strong>Itens:</strong> {{ obterNomesProdutos(pedido) }}
+              </div>
+              <div class="info-item">
+                <strong>Total:</strong> {{ formatarValor(pedido.valor_total) }}
+              </div>
+              <div class="info-item">
+                <strong>Horário:</strong> {{ formatarHorario(pedido.data_criacao) }}
+              </div>
+            </div>
+
+            <div class="pedido-actions">
+              <button class="btn btn-pronto" (click)="marcarComoPronto(pedido)">
+                Marcar como Pronto
+              </button>
+              <button class="btn btn-cancelar" (click)="cancelarPedido(pedido)">
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PEDIDOS PRONTOS -->
+    <div class="secao-pedidos" *ngIf="pedidosProntos.length > 0">
+      <div class="secao-card">
+        <div class="secao-header">
+          ✅ <h2>Pedidos Prontos</h2>
+        </div>
+        <div class="pedidos-lista">
+          <div class="pedido-card" *ngFor="let pedido of pedidosProntos">
+            <div class="pedido-header">
+              <h3 class="pedido-numero">Pedido #{{ pedido._id.slice(-6) }}</h3>
+              <span class="status-badge status-pronto">
+                {{ getStatusText(pedido.status) }}
+              </span>
+            </div>
+
+            <div class="pedido-info">
+              <div class="info-item">
+                <strong>Mesa:</strong> {{ pedido.mesa }}
+              </div>
+              <div class="info-item">
+                <strong>Itens:</strong> {{ obterNomesProdutos(pedido) }}
+              </div>
+              <div class="info-item">
+                <strong>Total:</strong> {{ formatarValor(pedido.valor_total) }}
+              </div>
+              <div class="info-item">
+                <strong>Horário:</strong> {{ formatarHorario(pedido.data_criacao) }}
+              </div>
+            </div>
+
+            <div class="pedido-actions">
+              <button class="btn btn-entregar" (click)="marcarComoConcluido(pedido)">
+                Entregar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PEDIDOS CONCLUÍDOS -->
+    <div class="secao-pedidos" *ngIf="pedidosConcluidos.length > 0">
+      <div class="secao-card">
+        <div class="secao-header">
+          ✅ <h2>Pedidos Concluídos</h2>
+        </div>
+        <div class="pedidos-lista">
+          <div class="pedido-card pedido-concluido" *ngFor="let pedido of pedidosConcluidos">
+            <div class="pedido-header">
+              <h3 class="pedido-numero">Pedido #{{ pedido._id.slice(-6) }}</h3>
+              <span class="status-badge status-concluido">
+                Concluído
+              </span>
+            </div>
+
+            <div class="pedido-info">
+              <div class="info-item">
+                <strong>Mesa:</strong> {{ pedido.mesa }}
+              </div>
+              <div class="info-item">
+                <strong>Itens:</strong> {{ obterNomesProdutos(pedido) }}
+              </div>
+              <div class="info-item">
+                <strong>Total:</strong> {{ formatarValor(pedido.valor_total) }}
+              </div>
+              <div class="info-item">
+                <strong>Concluído em:</strong> {{ formatarDataConclusao(pedido.data_atualizacao) }}
+              </div>
+            </div>
+
+            <div class="pedido-actions">
+              <button class="btn btn-concluido" disabled>
+                Concluído
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <!-- MENSAGEM QUANDO NÃO HÁ PEDIDOS -->
+    <div class="no-pedidos" *ngIf="Pedidos.length === 0">
+      <p>Nenhum pedido encontrado no momento.</p>
+    </div>
+  </div>
+</div>
