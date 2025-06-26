@@ -121,6 +121,34 @@
   color: #ff6600;
 }
 
+.botoes-acoes {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.btn-acao {
+  border: none;
+  background: transparent;
+  color: #cc7a00;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.btn-acao:hover {
+  color: #ffa94d;
+}
+
+.btn-acao.excluir {
+  color: #e74c3c;
+}
+
+.btn-acao.excluir:hover {
+  color: #ff6b6b;
+}
+
+
 /* Responsividade para telas menores */
 @media (max-width: 1200px) {
   .cardapio-container {

@@ -9,13 +9,26 @@
 
 <div class="cardapio-container">
   <div class="card-produto" *ngFor="let produto of products">
-    <img [src]="produto.imagem" [alt]="produto.nome_produto" class="imagem-produto">
-    <div class="card-content">
-      <h3>{{ produto.nome_produto }}</h3>
-      <p class="descricao">{{ produto.descricao }}</p>
-      <div class="card-footer">
-        <p class="preco">R$ {{ produto.preco_atual }}</p>
+  <img [src]="produto.imagem" [alt]="produto.nome_produto" class="imagem-produto">
+
+  <div class="card-content">
+    <h3>{{ produto.nome_produto }}</h3>
+    <p class="descricao">{{ produto.descricao }}</p>
+
+    <div class="card-footer">
+      <p class="preco">R$ {{ produto.preco_atual }}</p>
+
+      <!-- Botões de ação -->
+      <div class="botoes-acoes">
+        <button class="btn-acao editar" (click)="editarProduto(produto)">
+          <i class="bi bi-pencil-square"></i>
+        </button>
+        <button class="btn-acao excluir" (click)="excluirProduto(produto)">
+          <i class="bi bi-trash-fill"></i>
+        </button>
       </div>
     </div>
   </div>
+</div>
+
 </div>

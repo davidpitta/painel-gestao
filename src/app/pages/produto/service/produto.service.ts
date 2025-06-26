@@ -31,4 +31,8 @@ export class ProdutoService {
   criarProduto(produto: Produto): Observable<Produto> {
     return this.httpClient.post<Produto>('https://menu360-backend-production.up.railway.app/produto/criar', produto);
   }
+
+  excluirProduto(id: string): Observable<void> {
+    return this.httpClient.delete<void>(`https://menu360-backend-production.up.railway.app/produto/deletar/${id}`);
+  }
 }

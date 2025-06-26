@@ -10,12 +10,11 @@ export const routes: Routes = [
   { path: 'auth/callback', component: AuthCallbackComponent },
 
   // rotas protegidas
-  { path: 'pedido', component: PedidoComponent, canActivate: [AuthGuard] },
-  { path: 'cardapio', component: ProdutoComponent, canActivate: [AuthGuard] },
+  { path: 'pedido', component: PedidoComponent },
+  { path: 'cardapio', component: ProdutoComponent },
   {
     path: 'produto/criar',
     loadComponent: () => import('./pages/produto/formulario/formulario.component').then(m => m.FormularioComponent),
-    canActivate: [AuthGuard]
   },
 
   { path: '', redirectTo: 'pedido', pathMatch: 'full' }

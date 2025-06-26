@@ -20,12 +20,34 @@ export class ListaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.service.listaProduto().subscribe((data) => {
-      this.products = data;
-    });
+    this.carregarProdutos();
   }
 
   navegarParaCriarProduto(): void {
     this.router.navigate(['/produto/criar']);
+  }
+
+  editarProduto(produto: Produto) {
+    console.log(produto)
+  }
+
+  carregarProdutos(): void {
+    this.service.listaProduto().subscribe({
+      next: (produtos) => this.products = produtos,
+      error: () => alert('Erro ao carregar produtos.')
+    });
+  }
+
+  excluirProduto(produto: any): void {
+    const confirmar = confirm(`Deseja realmente excluir o produto "${produto.nome_produto}"?`);
+    if (!confirmar) return;
+
+    this.service.excluirProduto(produto._id).subscribe({
+      next: () => {
+        alert('Produto excluído com sucesso!');
+        this.carregarProdutos();
+      },
+      error: () => alert('Erro ao excluir produto.')
+    });
   }
 }
