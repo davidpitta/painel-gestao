@@ -9,16 +9,23 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'auth/callback', component: AuthCallbackComponent },
 
-  // rotas protegidas
-  { path: 'pedido', component: PedidoComponent },
-  { path: 'cardapio', component: ProdutoComponent },
-
+  {
+    path: 'pedido',
+    component: PedidoComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'cardapio',
+    component: ProdutoComponent,
+    canActivate: [AuthGuard]
+  },
   {
     path: 'produto/criar',
     loadComponent: () =>
       import('./pages/produto/formulario/formulario.component').then(
         (m) => m.FormularioComponent
       ),
+    canActivate: [AuthGuard]
   },
   {
     path: 'produto/editar/:id',
@@ -26,6 +33,7 @@ export const routes: Routes = [
       import('./pages/produto/formulario/formulario.component').then(
         (m) => m.FormularioComponent
       ),
+    canActivate: [AuthGuard],
     data: {
       prerender: false // Evita erro de pré-renderização na Vercel
     }
