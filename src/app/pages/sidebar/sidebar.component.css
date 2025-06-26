@@ -1,0 +1,125 @@
+.sidebar {
+  min-height: 100vh;
+  width: 285px; /* Aumentado o tamanho */
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  padding-top: 20px;
+  z-index: 1050;
+  box-shadow: rgba(0, 0, 0, 0.3) 4px 0px 15px;
+  overflow-y: hidden; /* Removido o scroll */
+  background: linear-gradient(135deg, #332B1E 0%, #3a3a3a 100%);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  border-bottom: 1px solid #3a3a3a;
+  margin-bottom: 0.5rem;
+}
+
+.logo-text {
+  font-size: 2.6rem; /* Aumentado o tamanho da fonte */
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-transform: lowercase;
+}
+
+.sidebar-section {
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+}
+
+.section-title {
+  font-size: 0.8rem; /* Aumentado o tamanho da fonte */
+  font-weight: 600;
+  color: #888888;
+  margin: 0.8rem 0 0.8rem 1rem;
+  text-transform: uppercase;
+  display: block;
+  letter-spacing: 1.5px;
+}
+
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  margin-bottom: 2px;
+}
+
+.menu-item a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: #cccccc;
+  text-decoration: none;
+  padding: 1rem 1.2rem; /* Aumentado o padding */
+  border-radius: 6px;
+  font-size: 1.1rem; /* Aumentado o tamanho da fonte */
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.menu-item a:hover {
+  background-color: rgba(255, 140, 0, 0.1);
+  color: #ffffff;
+}
+
+.menu-item a.active {
+  background-color: #cc7a00;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.icon {
+  margin-right: 1rem; /* Aumentado o espaçamento */
+  font-size: 1.1rem; /* Aumentado o tamanho do ícone */
+  width: 18px;
+  color: inherit;
+}
+
+.menu-item a.active .icon {
+  color: #ffffff;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 1rem;
+  border-top: 1px solid #3a3a3a;
+}
+
+.logout-button {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #cccccc;
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 140, 0, 0.1);
+  color: #ffffff;
+}
+
+.logout-button .icon {
+  margin-right: 1rem;
+  font-size: 1.1rem;
+  width: 18px;
+  color: inherit;
+}

@@ -1,0 +1,236 @@
+.pedidos-container {
+            background: linear-gradient(rgba(28, 25, 21, 0.85), rgba(28, 25, 21, 0.95)), 
+            url( https://www.estilozzo.com/wp-content/uploads/2022/08/Eventos-Pobre-Juan-3_Ricardo-Cruz-1-1-1.jpg);
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
+            font-family: 'Open Sauce', sans-serif;
+        }
+
+        .pedidos-header .titulo-principal {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0 0 30px 0;
+        }
+
+        .loading, .error-message {
+            text-align: center;
+            padding: 40px;
+            font-size: 16px;
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 8px;
+        }
+
+        .secao-pedidos {
+            margin-bottom: 40px;
+        }
+
+        .secao-card {
+            background: #1C1915;
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid #404040;
+        }
+
+        .secao-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .secao-header h2 {
+            color: #ff8c42;
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .pedidos-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .pedido-card {
+            background: #453C2E;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #332B1E;
+            transition: all 0.3s ease;
+        }
+
+        .pedido-card:hover {
+            border-color: #ff8c42;
+            box-shadow: 0 4px 12px rgba(255, 140, 66, 0.1);
+        }
+
+        .pedido-concluido {
+            opacity: 0.8;
+            border-color: #4caf50;
+        }
+
+        .pedido-concluido:hover {
+            border-color: #4caf50;
+        }
+
+        .pedido-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .pedido-numero {
+            color: #ff8c42;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .status-badge {
+            padding: 1rem;
+            transition: var();
+            margin-bottom: 1rem;
+            border: 1px solid;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+
+        .status-pendente {
+            background: #ffa726;
+            color: #1a1a1a;
+        }
+
+        .status-preparando {
+            background: #42a5f5;
+            color: #ffffff;
+        }
+
+        .status-pronto {
+            background: #66bb6a;
+            color: #ffffff;
+        }
+
+        .status-concluido {
+            background: #4caf50;
+            color: #ffffff;
+        }
+
+        .pedido-info {
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .info-item strong {
+            color: #cccccc;
+            margin-right: 8px;
+        }
+
+        .pedido-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+        }
+
+        .btn-iniciar {
+            background: #ff8c42;
+            color: #ffffff;
+        }
+
+        .btn-iniciar:hover {
+            background: #ff7b2e;
+        }
+
+        .btn-pronto {
+            background: #66bb6a;
+            color: #ffffff;
+        }
+
+        .btn-pronto:hover {
+            background: #5cb85c;
+        }
+
+        .btn-entregar {
+            background: #4caf50;
+            color: #ffffff;
+        }
+
+        .btn-entregar:hover {
+            background: #45a049;
+        }
+
+        .btn-concluido {
+            background: #4caf50;
+            color: #ffffff;
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-cancelar {
+            background: #ef5350;
+            color: #ffffff;
+        }
+
+        .btn-cancelar:hover {
+            background: #e53e3e;
+        }
+
+        .no-pedidos {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888888;
+            font-size: 16px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .pedidos-container {
+                padding: 15px;
+            }
+            
+            .pedido-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .status-badge {
+                align-self: flex-start;
+            }
+            
+            .pedido-actions {
+                justify-content: stretch;
+            }
+            
+            .btn {
+                flex: 1;
+                min-width: 120px;
+            }
+
+            .secao-pedidos {
+                margin-bottom: 30px;
+            }
+        }
